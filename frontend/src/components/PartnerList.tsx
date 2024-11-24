@@ -18,8 +18,12 @@ const PartnerList: React.FC = () => {
 
     useEffect(() => {
         const getPartner = async () => {
-            const data = await fetchPartner();
-            setPartner(data)
+            try {
+                const data = await fetchPartner();
+                setPartner(data);
+            } catch (error) {
+                console.error("Failed to fetch partners:", error);
+            }
         };
         getPartner();
     }, []);

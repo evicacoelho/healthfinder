@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { fetchPartner } from "src/api/api";
 
 interface Partner {
     id:             number;
@@ -16,25 +17,41 @@ interface PartnerDetailsProps {
     partner: Partner;
 }
 
-const PartnerDetails: React.FC<PartnerDetailsProps> = ({partner}) => {
+const PartnerDetails: React.FC<PartnerDetailsProps> = () => {
+    const [partner, setPartner] = useState<Partner[]>([]);
+
+    useEffect(() => {
+        const getPartner = async () => {
+            try {
+                const data = await fetchPartner();
+                setPartner(data);
+            } catch (error) {
+                console.error("Failed to fetch partners:", error);
+            }
+        };
+        getPartner();
+    }, []);
+    
     return (
         <div>
             <h2>Detalhes do parceiro:</h2>
             <dl>
-                <dt>Nome: </dt>
-                <dd>{partner.name}</dd>
-
+            {partner.map((item) => (
+                <><dt>Nome: </dt>
+                <dd>{item.name}</dd>
+                
                 <dt>Telefone:</dt>
-                <dd>{partner.phone}</dd>
-
+                <dd>{item.phone}</dd>
+                
                 <dt>Endereço de email:</dt>
-                <dd>{partner.email}</dd>
-
+                <dd>{item.email}</dd>
+                
                 <dt>Endereço:</dt>
-                <dd>{partner.address}</dd>
-
+                <dd>{item.address}</dd>
+                
                 <dt>Bairro:</dt>
-                <dd>{partner.neighborhood}</dd>
+                <dd>{item.neighborhood}</dd></>
+            ))}
             </dl>
         </div>
     )
