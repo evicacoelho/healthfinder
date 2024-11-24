@@ -2,9 +2,6 @@
     "compilerOptions": {
         "jsx": "react",
         "esModuleInterop": true,
-        "baseUrl": "./",
-        "paths": {
-            "@env": ["dotenv-typescript/src/env"]
-        }
+        "baseUrl": "./"
     }
 }

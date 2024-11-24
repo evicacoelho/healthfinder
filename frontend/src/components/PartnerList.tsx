@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { fetchPartner } from "src/api/api";
 
 interface Partner {
@@ -37,21 +37,4 @@ const PartnerList: React.FC = () => {
     );
 };
 
-const PartnerDetails: React.FC = () => {
-    const [partner, setPartner] = useState<Partner[]>([]);
-
-    return (
-        <div>
-            <ul>
-                {partner.map((item) => (
-                    <li key='${item.id}'>
-
-                    </li>
-                ))}
-            </ul>
-        </div>
-    )
-
-
-};
-
+export default PartnerList

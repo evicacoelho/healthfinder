@@ -1,8 +1,8 @@
-import axios from 'axios';
+import axios from 'axios'
 
-require('dotenv').config();
+const API_HOST = 'https://localhost:8080/apiv1'
 
 export const fetchPartner = async () => {
-    const response = await axios.get(`${process.env.API_HOST}`);
+    const response = await axios.get(`${API_HOST}/partner`);
     return response.data;
 }
