@@ -1,0 +1,16 @@
+/* sizing of map container */
+.leaflet-container {
+    height: 90vh;
+    width: 150vh;
+
+}
+
+.map-container {
+    size: 300px;
+    bottom: 20px;       
+    right: 15px;        
+    z-index: 1000;
+    position: fixed; 
+    border-radius: 2%;
+    border-color: navy;
+}
